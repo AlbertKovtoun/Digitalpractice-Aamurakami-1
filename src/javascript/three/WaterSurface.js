@@ -23,8 +23,9 @@ export class WaterSurface {
       scene,
       this.water,
       {
+        uTime: 0,
         resolution: 2048,
-        // blur: [512, 128],
+        blur: [512, 128],
         // mixBlur: 0.6,
         // mixContrast: 1,
         mirror: 1,
@@ -35,5 +36,7 @@ export class WaterSurface {
     })
   }
 
-  update() {}
+  update(elapsedTime) {
+    this.water.material.reflectorProps.uTime = elapsedTime
+  }
 }

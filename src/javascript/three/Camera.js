@@ -18,7 +18,7 @@ export class Camera {
       0.1,
       500
     )
-    this.camera.position.set(0, 2, 25)
+    this.camera.position.set(0, 8, 25)
     scene.add(this.camera)
   }
 
@@ -28,10 +28,16 @@ export class Camera {
     this.controls.minPolarAngle = -Math.PI / 4
     // this.controls.maxPolarAngle = Math.PI / 2 - 0.2
     this.controls.maxPolarAngle = Math.PI / 2
-    this.controls.target.set(0, 1, 0)
+    this.controls.target.set(0, 4, 0)
 
-    // this.controls.enableRotate = false
-    // this.controls.minDistance = 10
-    // this.controls.maxDistance = 28
+    this.controls.enableRotate = false
+    this.controls.minDistance = 10
+    this.controls.maxDistance = 28
+
+    this.controls.mouseButtons = {
+      LEFT: THREE.MOUSE.PAN,
+    }
+
+    this.controls.touches = { ONE: THREE.TOUCH.PAN, TWO: THREE.TOUCH.DOLLY_PAN }
   }
 }

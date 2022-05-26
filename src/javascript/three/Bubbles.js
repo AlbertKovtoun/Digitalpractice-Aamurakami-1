@@ -41,7 +41,7 @@ export class Bubbles {
       uniforms: {
         uOuterColor: { value: new THREE.Color(debugObject.bubblesOuterColor) },
         uInnerColor: { value: new THREE.Color(debugObject.bubblesInnerColor) },
-        uRingSize: { value: 4 },
+        uRingSize: { value: 1.2 },
       },
     })
 
@@ -195,8 +195,8 @@ export class Bubbles {
       })
 
     bubblesFolder.addInput(this.bubbleMaterial.uniforms.uRingSize, "value", {
-      min: 0,
-      max: 20,
+      min: 1,
+      max: 2,
       step: 0.01,
       label: "Ring Size",
     })

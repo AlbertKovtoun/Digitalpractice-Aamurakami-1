@@ -27,12 +27,12 @@ export const environmentFolder = pane.addFolder({
 })
 
 export const debugObject = {
-  backgroundColor: "#e5001e",
+  backgroundColor: "#1497ba",
   backgroundLightColor: "#ffffff",
   bubblesColor: "#00c3ff",
   bubblesCount: 1,
   bubblesScale: 1,
-  bubblesOuterColor: "#a0e8fe",
+  bubblesOuterColor: "#f3a562",
   bubblesInnerColor: "#ffffff",
 }
 
@@ -82,7 +82,7 @@ const tick = () => {
   // waterSurface.water.material.uniforms["time"].value += 1.0 / 240.0
   // waterSurface.water.material.uniforms["time"].value += deltaTime * 0.00005
 
-  waterSurface.update()
+  waterSurface.update(elapsedTime)
 
   // Render
   renderer.renderer.render(scene, camera.camera)
