@@ -5,7 +5,6 @@ import { Camera } from "./Camera"
 import { Renderer } from "./Renderer"
 import { Sizes } from "./Sizes"
 import { Bubbles } from "./Bubbles"
-import { Environment } from "./Environment"
 import { Pane } from "tweakpane"
 import { WaterSurface } from "./WaterSurface"
 import { Lights } from "./Lights"
@@ -50,8 +49,6 @@ scene.background = debugObject.backgroundColor
 
 export const lights = new Lights()
 
-export const environment = new Environment()
-
 export const background = new Background()
 
 export const bubbles = new Bubbles()
@@ -81,15 +78,18 @@ const tick = () => {
   camera.controls.update()
 
   //Update Mesh Reflector Material
-  // waterSurface.water.material.update()
+  waterSurface.water.material.update()
   // waterSurface.water.material.uniforms["time"].value += 1.0 / 240.0
-  waterSurface.water.material.uniforms["time"].value += deltaTime * 0.00005
-    // Render
-    renderer.renderer.render(scene, camera.camera)
+  // waterSurface.water.material.uniforms["time"].value += deltaTime * 0.00005
 
-  // setTimeout(() => {
-  window.requestAnimationFrame(tick)
-  // }, 1000 / 60)
+  waterSurface.update()
+
+  // Render
+  renderer.renderer.render(scene, camera.camera)
+
+  setTimeout(() => {
+    window.requestAnimationFrame(tick)
+  }, 1000 / 60)
 
   stats.end()
 }
