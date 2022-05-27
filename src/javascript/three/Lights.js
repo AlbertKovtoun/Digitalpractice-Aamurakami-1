@@ -11,7 +11,7 @@ export class Lights {
     scene.add(al)
 
     const pl = new THREE.PointLight(0xffffff, 1.5)
-    pl.position.set(0, 5, -22)
+    pl.position.set(0, 4, -22)
     pl.castShadow = true
     scene.add(pl)
   }

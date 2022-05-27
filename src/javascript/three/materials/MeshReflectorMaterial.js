@@ -291,8 +291,8 @@ float fractalNoise(vec2 p) {
   x += smoothNoise(p      );
   x += smoothNoise(p * 2. ) / 2.;
   x += smoothNoise(p * 4. ) / 4.;
-  x += smoothNoise(p * 8. ) / 8.;
-  x += smoothNoise(p * 16.) / 16.;
+  // x += smoothNoise(p * 8. ) / 8.;
+  // x += smoothNoise(p * 16.) / 16.;
   x /= 1. + 1./2. + 1./4. + 1./8. + 1./16.;
   return x;
           
@@ -334,18 +334,13 @@ float nestedNoise(vec2 p) {
           vec2 height;
           vec2 distortion;
 
-          height = vec2(nestedNoise(uv * 5.0 + uTime * 0.02)) * 1.5;
+          height = vec2(movingNoise(uv * 6.0 + uTime * 0.02)) * 1.8;
 
-          distortion = vec2(nestedNoise(uv * 10.0 + uTime * 0.2)) * 3.0; 
+          distortion = vec2(movingNoise(uv * 10.0 + uTime * 0.2)) * 3.0; 
 
-          //Make sure no distortion happens close to the camera
-          // if(modelPosition.z < -5.0) 
-          // {
-            modelPosition.xz -= distortion - 1.5;
-          // }
+          modelPosition.xz -= distortion - 1.5;
           
           modelPosition.y += height.y;
-          // modelPosition.y = 0.5;
 
           vec4 viewPosition = viewMatrix * modelPosition;
 
